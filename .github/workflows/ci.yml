@@ -1,0 +1,19 @@
+name: 'Trigger github page repo submodule sync'
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  push:
+    branches: 
+      - main
+
+jobs:
+  call-workflow-passing-data:    
+    uses: meshtw/meshtw.github.io/.github/workflows/submodule-trigger.yml@main
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+    
